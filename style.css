@@ -1,0 +1,33 @@
+#game{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
+    
+}
+#header{
+    text-align: center;
+    grid-column-start:2 ;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+
+}
+#start{
+    grid-column-start:2 ;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    padding: 0.7rem;
+    margin: 20% auto;
+    border: 0;
+    background-color: #f5e4f7;
+}
+
+#instr{
+    grid-column-start:2 ;
+    grid-column-end: 3;
+    padding: 0.7rem;
+    margin: 1% auto;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
