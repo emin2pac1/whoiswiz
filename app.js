@@ -5,7 +5,7 @@ header.textContent="WhoIsWiz";
 header.setAttribute('id','header');
 start.setAttribute('id','start');
 container.prepend(header);
-const instr = document.createElement('p');
+const instr = document.createElement('div');
 instr.setAttribute('id','instr');
 instr.textContent = "Test your math smarts!";
 start.textContent="Begin";
@@ -28,7 +28,7 @@ function qMaker() {
     if (gameObj.thisQ < gameObj.questions) {
         gameObj.thisQ++;
         let expression = [];
-        let min = 1, max =10
+        let min = 1, max = gameObj.maxVal;
 
         expression[0]= Math.floor(Math.random() * (max - min + 1) + min);
         let randOper = Math.floor(Math.random()*4);
@@ -43,8 +43,23 @@ function qMaker() {
         expression[3]= oper[randOper]; //value
         let missing = Math.floor(Math.random()*3);
         expression[2] = eval(expression[0] + expression[3]+expression[1]);
-        expression[missing] = '__';
-        instr.innerHTML = `${expression[0]} ${expression[3]} ${expression[1]} = ${expression[2]}`;
+        const stored = expression[missing];
+    
         gameObj.questions++;
+
+        switch (missing) {
+            case 3:
+                instr.innerHTML = `${expression[0]} <input type="number" id ="userAns" value=66>  ${expression[1]} = ${expression[2]}`;
+                break;
+            case 0:
+                instr.innerHTML = `<input type="number" id ="userAns" value=66>  ${expression[3]} ${expression[1]}  = ${expression[2]}`;
+                break;
+                case 1:
+                instr.innerHTML = `${expression[0]} ${expression[3]} <input type="number" id ="userAns" value=66>  = ${expression[2]}`;
+                break;
+                case 2:
+                instr.innerHTML = `${expression[0]} ${expression[3]} ${expression[1]} = <input type="number" id ="userAns" value=66>`;
+                break;
+        }       
     }
 }
